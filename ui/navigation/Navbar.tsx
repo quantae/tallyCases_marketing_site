@@ -3,12 +3,10 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-
-
 import ClickOutside from '../components/ClickOutside';
 import { HamburgerIcon } from '../components/HamburgerMenu';
 import Image from 'next/image';
-
+import Button from '../Button';
 
 
 const Navbar = () => {
@@ -19,7 +17,6 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(prev => !prev);
   };
-
 
 
   useEffect(() => {
@@ -37,27 +34,31 @@ const Navbar = () => {
     };
   }, []);
   return (
-    <nav className="w-full z-50">
+    <nav className="w-full" style={{ zIndex: '9999' }}>
       <motion.div
         className={`font-poppins fixed top-0 left-1/2  transform -translate-x-1/2 w-full  transition-all duration-300 ease-in-out flex justify-center ${isScrolled
-          ? 'bg-white text-primary ' // glass-like when scrolled
-          : 'md:text-white text-primary' // Less opaque when at top
+          ? 'bg-white text-gray-500 ' // glass-like when scrolled
+          : 'md:text-gray-500 text-gray-500' // Less opaque when at top
           } dark:bg-opacity-75`}
-        initial={{ y: -10, x: '-50%', opacity: 0 }}
+        initial={{ y: -10, x: '-20%', opacity: 0 }}
         animate={{ y: 0, x: '-50%', opacity: 1 }}
       >
         <div className='w-full md:w-[80%] p-4 md:p-6 flex flex-row justify-between items-center'>
-          <div><Image src={!isScrolled ? '/assets/tc_logo.png' : '/assets/tc_logo_primary.png'} alt='logo' height={30} width={100}/></div>
-      
-           <div className='hidden md:block'>
-            <ul className='flex justify-between gap-4 md:text-lg '>
-              <Link href="#pricing" className={`${!isScrolled ? 'hover:text-white/65' : 'hover:text-slate-700 hover:text-opacity-70'}   transform transition duration-200`}>Pricing</Link>
-              <Link href="#pricing" className={`${!isScrolled ? 'hover:text-white/65' : 'hover:text-slate-700 hover:text-opacity-70'}   transform transition duration-200`}>Contact</Link>
-              <Link href="#pricing" className={`${!isScrolled ? 'hover:text-white/65' : 'hover:text-slate-700 hover:text-opacity-70'}   transform transition duration-200`}>Support</Link>
+          <div><Image src={!isScrolled ? '/assets/tc_logo_Primary.png' : '/assets/tc_logo_Primary.png'} alt='logo' height={30} width={100} /></div>
+
+          <div className='hidden md:block'>
+            <ul className='flex justify-between gap-4 md:text-base font-semibold text-gray-500 '>
+              <Link href="#pricing" className={`${!isScrolled ? 'hover:text-gray-800' : 'hover:text-slate-700 hover:text-opacity-70'}   transform transition duration-200`}>Pricing</Link>
+              <Link href="#pricing" className={`${!isScrolled ? 'hover:text-gray-800' : 'hover:text-slate-700 hover:text-opacity-70'}   transform transition duration-200`}>Blog</Link>
+              {/* <Link href="#pricing" className={`${!isScrolled ? 'hover:text-white/65' : 'hover:text-slate-700 hover:text-opacity-70'}   transform transition duration-200`}>Support</Link> */}
             </ul>
-          </div> 
-<div className='hidden md:block'><p>Sign In</p></div>
-          <div className='md:hidden text-white'>
+          </div>
+          <div className='hidden md:flex md:flex-row md:gap-4'>
+            <Button label='sign In' variant='borderless' />
+            <Button label='Get started' className='py-2' />
+
+          </div>
+          <div className='md:hidden text-gray-500'>
             <HamburgerIcon toggleMenu={toggleMenu} isOpen={isOpen} insideRef={insideRef} />
             {isOpen && (
               <motion.div
@@ -73,7 +74,7 @@ const Navbar = () => {
                 >
                   <div className='mt-[2rem] p-8'>
                     <ul className='flex flex-col gap-6 text-lg text-primaryVariant'>
-                      {['Projects', 'Articles', 'Skills', 'About me', 'Contact me'].map((item, index) => {
+                      {['Get Started','Pricing', 'Blog', 'Twitter X'].map((item, index) => {
                         // Determine the href based on whether it's a page or an internal section
                         const href =
                           item === 'Skills' ? '/#skills' :
@@ -115,9 +116,9 @@ const Navbar = () => {
             }
           </div>
 
-          
-          
-          
+
+
+
         </div>
 
       </motion.div>
