@@ -2,6 +2,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import ClickOutside from '../components/ClickOutside';
 import { HamburgerIcon } from '../components/HamburgerMenu';
@@ -13,6 +14,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const insideRef = useRef<HTMLButtonElement | null>(null);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(prev => !prev);
@@ -48,14 +50,14 @@ const Navbar = () => {
 
           <div className='hidden md:block'>
             <ul className='flex justify-between gap-4 md:text-base font-semibold text-gray-500 '>
-              <Link href="#pricing" className={`${!isScrolled ? 'hover:text-gray-800' : 'hover:text-slate-700 hover:text-opacity-70'}   transform transition duration-200`}>Pricing</Link>
-              <Link href="#pricing" className={`${!isScrolled ? 'hover:text-gray-800' : 'hover:text-slate-700 hover:text-opacity-70'}   transform transition duration-200`}>Blog</Link>
+              <Link href="/pricing" className={`${!isScrolled ? 'hover:text-gray-800' : 'hover:text-slate-700 hover:text-opacity-70'}   transform transition duration-200`}>Pricing</Link>
+              <Link href="/blog" className={`${!isScrolled ? 'hover:text-gray-800' : 'hover:text-slate-700 hover:text-opacity-70'}   transform transition duration-200`}>Blog</Link>
               {/* <Link href="#pricing" className={`${!isScrolled ? 'hover:text-white/65' : 'hover:text-slate-700 hover:text-opacity-70'}   transform transition duration-200`}>Support</Link> */}
             </ul>
           </div>
           <div className='hidden md:flex md:flex-row md:gap-4'>
-            <Button label='sign In' variant='borderless' />
-            <Button label='Get started' className='py-2' />
+            <Button label='sign In' variant='borderless' onClick={() => router.push('/signin')}/>
+            <Button label='Get started' className='py-2' onClick={() => router.push('/signup')}/>
 
           </div>
           <div className='md:hidden text-gray-500'>

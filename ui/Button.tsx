@@ -6,7 +6,9 @@ type ButtonProps = {
   className?: string; 
   variant?: 'primary' | 'secondary' | 'borderless'; 
   icon?: ReactNode; 
+  type?: string;
   onClick?: () => void; 
+  [key: string]: any;
 };
 
 const Button = ({
@@ -14,7 +16,8 @@ const Button = ({
   className = '',
   variant = 'primary', // Default to primary variant
   icon,
-  onClick
+  onClick,
+  ...props
 }: ButtonProps) => {
   // Define common base classes for all buttons
   const baseStyles = 'px-4 rounded inline-flex items-center justify-center';

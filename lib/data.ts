@@ -1,5 +1,5 @@
-import { featureList } from "./types"
-export const featureData: ReadonlyArray<featureList> = [
+import { FeatureList } from "./types"
+export const featureData: ReadonlyArray<FeatureList> = [
     {
         title: 'Receipt Management',
         description: 'Effortlessly generate, organize and create detailed revenue receipts for every service provided, allowing you to track income sources and financial performance accurately'
