@@ -4,7 +4,7 @@ import { featureData } from '@/lib/data';
 
 const FeaturesSection = () => {
     return (
-        <div className='w-full flex items-center justify-center -z-10'>
+        <div className='w-full flex items-center justify-center '>
         <section className='w-full md:w-[80%] pt-[5rem] pb-[5rem] flex flex-col p-4 items-center'>
             <div className='flex flex-col gap-4 w-full md:w-[70%] lg:w-[60%] xl:w-[40%] mb-[5rem] text-center'>
                 <h4 className='font-sans text-4xl font-medium text-gray-600'>Main Features</h4>

@@ -36,7 +36,7 @@ const Navbar = () => {
     };
   }, []);
   return (
-    <nav className="w-full" style={{ zIndex: '9999' }}>
+    <nav className="w-full z-50">
       <motion.div
         className={`font-poppins fixed top-0 left-1/2  transform -translate-x-1/2 w-full  transition-all duration-300 ease-in-out flex justify-center ${isScrolled
           ? 'bg-white text-gray-500 ' // glass-like when scrolled
@@ -46,7 +46,7 @@ const Navbar = () => {
         animate={{ y: 0, x: '-50%', opacity: 1 }}
       >
         <div className='w-full md:w-[80%] p-4 md:p-6 flex flex-row justify-between items-center'>
-          <div><Image src={!isScrolled ? '/assets/tc_logo_Primary.png' : '/assets/tc_logo_Primary.png'} alt='logo' height={30} width={100} /></div>
+          <div><Link href='/'><Image src={!isScrolled ? '/assets/tc_logo_Primary.png' : '/assets/tc_logo_Primary.png'} alt='logo' height={30} width={100} /></Link></div>
 
           <div className='hidden md:block'>
             <ul className='flex justify-between gap-4 md:text-base font-semibold text-gray-500 '>
