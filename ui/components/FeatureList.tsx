@@ -5,7 +5,7 @@ import styles from './FeatureList.module.css'
 
 //**TS TYPES */
 type FeatureListProps = {
-  icon: ReactNode;
+  icon?: ReactNode;
   title: string;
   body: string;
 }
