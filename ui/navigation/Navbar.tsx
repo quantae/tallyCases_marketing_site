@@ -56,8 +56,8 @@ const Navbar = () => {
             </ul>
           </div>
           <div className='hidden md:flex md:flex-row md:gap-4'>
-            <Button label='sign In' variant='borderless' onClick={() => router.push('/signin')}/>
-            <Button label='Get started' className='py-2' onClick={() => router.push('/signup')}/>
+            <Button label='Sign In' variant='borderless' onClick={() => router.push('/signin')}/>
+            <Button label='Get Started' className='py-2' onClick={() => router.push('/signup')}/>
 
           </div>
           <div className='md:hidden text-gray-500'>

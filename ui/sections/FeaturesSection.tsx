@@ -10,7 +10,7 @@ const FeaturesSection = () => {
                 <h4 className='font-sans text-4xl font-medium text-gray-600'>Main Features</h4>
                 <p className='text-lg text-slate-500'>Create receipts and manage your center with a seamless and intuitive user interface.</p>
             </div>
-            <div className='flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-10'>
+            <div className='flex flex-wrap justify-between gap-4 sm:gap-6 lg:gap-10'>
                 {featureData?.map((feature, index) => (
                     <FeatureList key={index} body={feature.description} title={feature.title} />
                 ))}

@@ -20,7 +20,7 @@ const Button = ({
   ...props
 }: ButtonProps) => {
   // Define common base classes for all buttons
-  const baseStyles = 'px-4 rounded inline-flex items-center justify-center';
+  const baseStyles = 'px-4 rounded inline-flex items-center justify-center ';
 
   // Conditional classes for each variant
   const variantStyles = {

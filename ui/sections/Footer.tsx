@@ -4,9 +4,9 @@ import React from 'react'
 const Footer = () => {
     return (
         <div className='border-t-[0.5px] border-t-gray-300 w-full flex justify-center p-8'>
-            <div className='py-[1rem] md:py-[5rem] flex justify-between w-full md:w-[80%] font-sans'>
+            <div className='py-[1rem] md:py-[1rem] flex gap-12 flex-col-reverse md:flex-row md:justify-between w-full md:w-[80%] font-sans'>
                 <div className='w-[18rem] md:w-[25rem flex flex-col gap-6'>
-                    <p>Our purpose</p>
+                    <p className='text-gray-600 font-bold'>Our purpose</p>
                     <p className='text-gray-500'>Platform which helps small-medium scale Diagnostic centers go digital easily without overhead cost</p>
                     <p className='text-gray-500'>
                     We dream of a future where all local small-medium scale diagnostic centers can adapt technology, no matter how small they are or how much they know about technology.
@@ -15,7 +15,8 @@ const Footer = () => {
                 </div>
                 
                 <div>
-                    <ul className='text-lg text-gray-600'>
+                <p className='text-gray-600 font-bold mb-4'>Quick Links</p>
+                    <ul className='text-lg text-gray-500'>
                         <li><Link href='#'>Pricing</Link></li>
                         <li><Link href='#'>Team</Link></li>
                         <li><Link href='#'>Blog</Link></li>
