@@ -7,7 +7,7 @@ const Footer = () => {
             <div className='py-[1rem] md:py-[1rem] flex gap-12 flex-col-reverse md:flex-row md:justify-between w-full md:w-[80%] font-sans'>
                 <div className='w-[18rem] md:w-[25rem flex flex-col gap-6'>
                     <p className='text-gray-600 font-bold'>Our purpose</p>
-                    <p className='text-gray-500'>Platform which helps small-medium scale Diagnostic centers go digital easily without overhead cost</p>
+                    <p className='text-gray-500'>Provide a platform which allows small-medium scale Diagnostic centers go digital easily without overhead cost that comes with custom digital solutions used by large scale clinics</p>
                     <p className='text-gray-500'>
                     We dream of a future where all local small-medium scale diagnostic centers can adapt technology, no matter how small they are or how much they know about technology.
                     </p>

@@ -6,7 +6,7 @@ type ButtonProps = {
   className?: string; 
   variant?: 'primary' | 'secondary' | 'borderless'; 
   icon?: ReactNode; 
-  type?: string;
+  type?: 'button' | 'submit' | 'reset';
   onClick?: () => void; 
   [key: string]: any;
 };
@@ -17,6 +17,7 @@ const Button = ({
   variant = 'primary', // Default to primary variant
   icon,
   onClick,
+  type= 'button',
   ...props
 }: ButtonProps) => {
   // Define common base classes for all buttons
@@ -30,7 +31,8 @@ const Button = ({
   };
 
   return (
-    <button className={`${baseStyles} ${variantStyles[variant]} ${className}`} onClick={onClick}>
+    <button type={type}
+     className={`${baseStyles} ${variantStyles[variant]} ${className}`}  onClick={onClick}  {...props}>
       {icon && <span className="mr-2">{icon}</span>} {/* Only render the icon if provided */}
       <span>{label}</span>
     </button>

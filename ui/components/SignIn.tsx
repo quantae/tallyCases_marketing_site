@@ -11,7 +11,7 @@ const SignIn = () => {
                     <p className='text-gray-500'>
                         To sign In to your business page, prefix <span className='text-gray-900 font-bold'>.tallycases.com</span> with your business subdomain
                     </p>
-                    <p className='py-1 px-4 mt-[2rem] bg-gray-200 rounded-xl w-fit'>mybusiness.tallycases.com</p>
+                    <p className='py-1 px-4 mt-[2rem] bg-gray-200 rounded-xl w-fit'>https://<span className='text-red-600'>business</span>.tallycases.com</p>
                 </div>
 
             </div>

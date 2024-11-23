@@ -1,4 +1,7 @@
-import { FeatureList } from "./types"
+import { FeatureList } from "./types";
+import {subscriptionPlanValues} from './types';
+
+
 export const featureData: ReadonlyArray<FeatureList> = [
     {
         title: 'Receipt Management',
@@ -17,4 +20,30 @@ export const featureData: ReadonlyArray<FeatureList> = [
         description: 'Enable your team to work together with secure, role-based access ensuring that only authorized personnel can access sensitive data from front desk to management.'
     }
 
+]
+
+
+export const pricingData: ReadonlyArray<subscriptionPlanValues> = [
+{
+    subscriptionPlan: 'Basic',
+    amount: '$5.99',
+    planFeatures: [
+        'Unlimited Invoices and Receipts.',
+        'Multiple business Branches',
+        'Multiple users',
+        'Account Dashboard to track sales and payments'
+    ]
+},
+{
+    subscriptionPlan: 'Pro',
+    amount: '$9.99',
+    planFeatures: [
+        'Unlimited Invoices and Receipts.',
+        'Multiple business Branches',
+        'Multiple users',
+        'Account Dashboard to track sales and payments',
+        'Clinician Monitoring.',
+        'Dashboard monitoring for clinicians.'
+    ]
+}
 ]

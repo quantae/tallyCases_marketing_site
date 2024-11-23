@@ -4,10 +4,17 @@ export interface FeatureList {
 }
 
 export interface SignUpFormValues {
-    firstName: string;
-    lastName: string;
+   businessRepFirstName: string;
+    businessRepLastName: string;
+    businessRepEmail: string;
     businessName: string;
     businessSubdomain: string;
     businessPhoneNumber: string;
-    businessEmail: string;
+    subscriptionPlan?: string;
+  }
+
+  export interface subscriptionPlanValues {
+    subscriptionPlan: string,
+    amount: string,
+    planFeatures: Array<string>
   }
