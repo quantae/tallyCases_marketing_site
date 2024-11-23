@@ -196,15 +196,15 @@ const SignUpForm1 = () => {
                                 type='radio'
                                 id='BasicPlan'
                                 value='Basic'
-                                checked={selectedPlan === 'Basic'}
-                                onChange={handlePlanChange}
+                                // checked={selectedPlan === 'Basic'}
+                                // onChange={handlePlanChange}
                                 />
                                  <RadioButton label='Pro' name='subscriptionPlan'
                                 type='radio'
                                 id='ProPlan'
                                 value='Pro'
-                                checked={selectedPlan === 'Pro'}
-                onChange={handlePlanChange} 
+                //                 checked={selectedPlan === 'Pro'}
+                // onChange={handlePlanChange} 
                                 />
                             </div>
                                 
