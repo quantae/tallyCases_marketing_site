@@ -1,4 +1,7 @@
+
+
 export interface FeatureList {
+    icon?: React.ReactNode;
     title: string;
     description: string;
 }

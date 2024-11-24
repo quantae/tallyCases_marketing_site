@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   description: "POS for diagnostic centers",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
