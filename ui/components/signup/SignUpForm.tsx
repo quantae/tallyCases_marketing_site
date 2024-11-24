@@ -17,13 +17,13 @@ const initialValues: SignUpFormValues = {
     businessName: "",
     businessSubdomain: "",
     businessPhoneNumber: "",
-    subscriptionPlan:""
+    subscriptionPlan: ""
 };
 
 
 
-const SignUpForm1 = () => {
-   const searchParams = useSearchParams();
+const SignUpForm = () => {
+    const searchParams = useSearchParams();
     const initialPlan = searchParams.get('plan');
     const [selectedPlan, setSelectedPlan] = useState<string | null>(initialPlan);
 
@@ -33,8 +33,8 @@ const SignUpForm1 = () => {
     const [otpMessage, setOtpMessage] = useState<string>('');
     const [signUpMessage, setSignUpMessage] = useState<string>('');
 
-   
-     const handlePlanChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+    const handlePlanChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedPlan(event.target.value);
     };
 
@@ -42,7 +42,7 @@ const SignUpForm1 = () => {
         console.log('handleSubmit initiated', values);
 
         try {
-            const response = await fetch('https://www.tallycases.localhost:9000/api/v1/business/create-business', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SIGNUP_API}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ const SignUpForm1 = () => {
         console.log('Submitted', email);
 
         try {
-            const response = await fetch('https://www.tallycases.localhost:9000/api/v1/otp/generate-otp', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_GENERATE_OTP}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ const SignUpForm1 = () => {
         console.log('Submitted', emailData);
 
         try {
-            const response = await fetch('https://www.tallycases.localhost:9000/api/v1/otp/verify-otp', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_VERIFY_OTP}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -167,7 +167,7 @@ const SignUpForm1 = () => {
                             .min(2, 'Must be at least 2 characters')
                             .max(20, 'Must not be more than 20 characters')
                             .required('Required'),
-                        businessRepEmail: Yup.string().email('Invalid email address'),
+                        businessRepEmail: Yup.string().email('Invalid email address').required(),
                         businessName: Yup.string()
                             .min(4, 'Must be at least 4 characters')
                             .max(100, 'Must not be more than 100 characters')
@@ -176,10 +176,10 @@ const SignUpForm1 = () => {
                             .min(4, 'Must be at least 4 characters')
                             .max(20, 'Must not be more than 100 characters')
                             .required('Required'),
-                        businessPhoneNumber: Yup.string()
+                        businessPhoneNumber: Yup.string().required()
                             .min(12, 'Must be 12 digits')
                             .max(12, 'Must not exceed 12 digits'),
-                            subscriptionPlan: Yup.string().required(),
+                        subscriptionPlan: Yup.string().required(),
                     })}
                 >
                     {({ isSubmitting }) => (
@@ -191,23 +191,23 @@ const SignUpForm1 = () => {
                                 <p className="text-base mt-4 text-gray-600 font-light">
                                     Subscription Plan
                                 </p>
-                            <div className='flex flex-row justify-center gap-4'>
-                                <RadioButton label='Basic' name='subscriptionPlan'
-                                type='radio'
-                                id='BasicPlan'
-                                value='Basic'
-                                // checked={selectedPlan === 'Basic'}
-                                // onChange={handlePlanChange}
-                                />
-                                 <RadioButton label='Pro' name='subscriptionPlan'
-                                type='radio'
-                                id='ProPlan'
-                                value='Pro'
-                //                 checked={selectedPlan === 'Pro'}
-                // onChange={handlePlanChange} 
-                                />
-                            </div>
-                                
+                                <div className='flex flex-row justify-center gap-4'>
+                                    <RadioButton label='Basic' name='subscriptionPlan'
+                                        type='radio'
+                                        id='BasicPlan'
+                                        value='Basic'
+                                        // checked={selectedPlan}
+                                        // onChange={handlePlanChange}
+                                    />
+                                    <RadioButton label='Pro' name='subscriptionPlan'
+                                        type='radio'
+                                        id='ProPlan'
+                                        value='Pro'
+                                        // checked={selectedPlan}
+                                        // onChange={handlePlanChange}
+                                    />
+                                </div>
+
                             </section>
                             <section>
                                 <p className="text-base mt-4 text-gray-600 font-light">
@@ -277,4 +277,4 @@ const SignUpForm1 = () => {
     );
 };
 
-export default SignUpForm1;
+export default SignUpForm;

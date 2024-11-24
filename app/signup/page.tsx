@@ -1,16 +1,14 @@
 'use client'
-import SignUpForm1 from '@/ui/components/signup/SignUpForm1';
+import SignUpForm from '@/ui/components/signup/SignUpForm';
 import React, { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation';
 
 const page = () => {
   return (
     <div>
-<Suspense fallback={<div>Loading...</div>}>
-<SignUpForm1 />
-</Suspense>
-      
-
+      <Suspense fallback={<div>Loading...</div>}>
+        <SignUpForm />
+      </Suspense>
     </div>
   )
 }
