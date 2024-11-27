@@ -98,8 +98,8 @@ const SignUpForm = () => {
 
             const data = await response.json();
             console.log('Form submitted successfully:', data);
-            setOtpMessage(data?.message)
-            if (data?.success === true) {
+            setOtpMessage(data?.sendOTPMail?.message)
+            if (data?.sendOTPMail?.success === true) {
                 setIsOtpStep(true);
             }
             // Optionally handle success (e.g., redirect the user, show a success message)
