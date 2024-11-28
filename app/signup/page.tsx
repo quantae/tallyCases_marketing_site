@@ -1,15 +1,21 @@
 'use client'
 import SignUpForm from '@/ui/components/signup/SignUpForm';
-import React, { Suspense } from 'react'
-import { useSearchParams } from 'next/navigation';
+import React, { Suspense } from 'react';
+import { LoadingProvider } from '@/lib/LoadingContext';
+import LoadingIndicator from '@/ui/components/loading/LoadingIndicator';
+
 
 const page = () => {
   return (
-    <div>
+    <LoadingProvider>
+      <LoadingIndicator/>
+      <div>
       <Suspense fallback={<div>Loading...</div>}>
         <SignUpForm />
       </Suspense>
-    </div>
+    </div>  
+    </LoadingProvider>
+  
   )
 }
 

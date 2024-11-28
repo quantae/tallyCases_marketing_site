@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { useSearchParams } from 'next/navigation';
+import { useLoading } from '@/lib/LoadingContext';
 
 import Button from '@/ui/Button';
 import { TextInput } from '@/ui/inputs/TextInput';
@@ -23,6 +24,7 @@ const initialValues: SignUpFormValues = {
 
 
 const SignUpForm = () => {
+    const { setIsLoading } = useLoading();
     const searchParams = useSearchParams();
     const initialPlan = searchParams.get('plan');
     const [selectedPlan, setSelectedPlan] = useState<string | null>(initialPlan);
@@ -40,7 +42,7 @@ const SignUpForm = () => {
 
     const handleSubmit = async (values: SignUpFormValues, { setSubmitting }: FormikHelpers<SignUpFormValues>) => {
         console.log('handleSubmit initiated', values);
-
+        setIsLoading(true);
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_SIGNUP_API}`, {
                 method: 'POST',
@@ -70,7 +72,7 @@ const SignUpForm = () => {
             console.error('Error submitting the form:', error);
             // Optionally handle error (e.g., show an error message)
         } finally {
-            setSubmitting(false);
+            setIsLoading(false)
         }
     };
 
@@ -81,7 +83,7 @@ const SignUpForm = () => {
         }
 
         console.log('Submitted', email);
-
+        setIsLoading(true)
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_GENERATE_OTP}`, {
                 method: 'POST',
@@ -107,7 +109,7 @@ const SignUpForm = () => {
             console.error('Error Generating OTP:', error);
             // Optionally handle error (e.g., show an error message)
         } finally {
-
+            setIsLoading(false);
         }
     };
 
@@ -120,6 +122,7 @@ const SignUpForm = () => {
 
         console.log('Submitted', emailData);
 
+        setIsLoading(true);
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_VERIFY_OTP}`, {
                 method: 'POST',
@@ -145,7 +148,7 @@ const SignUpForm = () => {
             console.error('Error Verifying OTP:', error);
             // Optionally handle error (e.g., show an error message)
         } finally {
-
+            setIsLoading(false)
         }
     };
 
@@ -196,15 +199,15 @@ const SignUpForm = () => {
                                         type='radio'
                                         id='BasicPlan'
                                         value='Basic'
-                                        // checked={selectedPlan}
-                                        // onChange={handlePlanChange}
+                                    // checked={selectedPlan}
+                                    // onChange={handlePlanChange}
                                     />
                                     <RadioButton label='Pro' name='subscriptionPlan'
                                         type='radio'
                                         id='ProPlan'
                                         value='Pro'
-                                        // checked={selectedPlan}
-                                        // onChange={handlePlanChange}
+                                    // checked={selectedPlan}
+                                    // onChange={handlePlanChange}
                                     />
                                 </div>
 
@@ -269,10 +272,6 @@ const SignUpForm = () => {
                     )}
                 </Formik>
             )}
-
-
-
-
         </div>
     );
 };

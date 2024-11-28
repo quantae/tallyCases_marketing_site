@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/ui/navigation/Navbar";
+import { LoadingProvider } from "@/lib/LoadingContext";
+import LoadingIndicator from "@/ui/components/loading/LoadingIndicator";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +20,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <LoadingProvider>
+        <LoadingIndicator/>
+          <body className={inter.className}>
         <Navbar/>
         {children}</body>
+      </LoadingProvider>
+    
     </html>
   );
 }

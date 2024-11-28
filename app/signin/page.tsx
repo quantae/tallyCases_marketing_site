@@ -1,11 +1,17 @@
 import SignIn from '@/ui/components/SignIn';
-import React from 'react'
+import React from 'react';
+import { LoadingProvider } from '@/lib/LoadingContext';
+import LoadingIndicator from '@/ui/components/loading/LoadingIndicator';
 
 const page = () => {
     return (
-        <div>
+        <LoadingProvider>
+            <LoadingIndicator/>
+             <div>
             <SignIn/>
         </div>
+        </LoadingProvider>
+       
     )
 }
 
