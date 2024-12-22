@@ -95,7 +95,7 @@ const OTPInput = ({
                             className="ml-2"
                             onClick={() => {
                                 resend();
-                                console.log('Resend OTP');
+                               // console.log('Resend OTP');
                             }}
                         />
                     </div>

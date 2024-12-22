@@ -41,7 +41,7 @@ const SignUpForm = () => {
     };
 
     const handleSubmit = async (values: SignUpFormValues, { setSubmitting }: FormikHelpers<SignUpFormValues>) => {
-        console.log('handleSubmit initiated', values);
+        
         setIsLoading(true);
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_SIGNUP_API}`, {
@@ -58,7 +58,7 @@ const SignUpForm = () => {
             }
 
             const data = await response.json();
-            console.log('Form submitted successfully:', data);
+         
             localStorage.setItem('tallycases', values.businessRepEmail);
             setSignUpMessage(data?.message)
 
@@ -82,7 +82,7 @@ const SignUpForm = () => {
             email
         }
 
-        console.log('Submitted', email);
+        //console.log('Submitted', email);
         setIsLoading(true)
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_GENERATE_OTP}`, {
@@ -99,7 +99,7 @@ const SignUpForm = () => {
             }
 
             const data = await response.json();
-            console.log('Form submitted successfully:', data);
+          //  console.log('Form submitted successfully:', data);
             setOtpMessage(data?.sendOTPMail?.message)
             if (data?.sendOTPMail?.success === true) {
                 setIsOtpStep(true);
@@ -120,7 +120,7 @@ const SignUpForm = () => {
             otp
         }
 
-        console.log('Submitted', emailData);
+       // console.log('Submitted', emailData);
 
         setIsLoading(true);
         try {
@@ -138,7 +138,7 @@ const SignUpForm = () => {
             }
 
             const otpData = await response.json();
-            console.log('OTP :', otpData);
+           // console.log('OTP :', otpData);
             if (otpData?.success === true) {
                 setIsOtpVerified(true);
             }
@@ -156,7 +156,7 @@ const SignUpForm = () => {
         <div className="w-full md:w-[35rem] mx-auto mt-[10rem]">
             {isOtpStep ? (<OTPInput onComplete={(otp) => {
                 handleVerifyOTP(otp)
-                console.log('OPT opened')
+               // console.log('OPT opened')
             }} resend={handleOTPGenerate} length={6} isVerified={isOtpVerified} message={otpMessage} />) : (
                 <Formik
                     initialValues={initialValues}
