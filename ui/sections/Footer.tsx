@@ -11,6 +11,10 @@ const Footer = () => {
                     <p className='text-gray-500'>
                     We dream of a future where all local small-to-medium scale diagnostic centers can adapt technology, no matter how small they are or how much they know about technology.
                     </p>
+
+                    <p className='text-gray-700'>
+                    contact us: hello@tallycases.com
+                    </p>
                     <p>Copyright 2024 - All rights reserved</p>
                 </div>
                 
