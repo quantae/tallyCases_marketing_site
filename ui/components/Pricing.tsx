@@ -8,10 +8,10 @@ const Pricing = () => {
             <div className="w-full md:w-[45rem] mx-auto mt-[10rem]">
                 <div className='w-full p-4 flex flex-col items-center'>
                     <p className="text-xl md:text-3xl text-gray-600 font-bold">
-                        Choose a plan & pay later.
+                    Start Managing your Center.
                     </p>
                     <p className="text-lg md:text-lg text-gray-500 ">
-                        Start managing your center
+                          Choose a plan & pay later.
                     </p>
                     <div className=' w-full p-4 mt-10 flex flex-col justify-center items-center  md:items-start md:flex-row gap-4'>
                         {pricingData.map((priceData, index) => (

@@ -19,6 +19,7 @@ const config: Config = {
         'secondary-light': 'var(--secondary-light)',
         'accent': 'var(--accent)',
        },
+      
        gridTemplateColumns: {
         'cus-1-6fr': '1fr 6fr',
         'cus-1-5fr': '1fr 5fr',

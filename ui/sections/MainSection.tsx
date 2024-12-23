@@ -11,12 +11,12 @@ const MainSection = () => {
             <section>
                 <div className='flex flex-col items-center m-auto justify-center md:w-[80%] p-4'>
                     <div className='mt-[10rem] w-full flex flex-col justify-center items-center align-middle gap-6'>
-                        <h1 className=' text-[2.5rem] md:text-[3rem] font-bold font-sans text-center text-gray-600'>Revenue Management Tool <br />for Diagnostic Centers.</h1>
-                        <p className='text-center text-gray-500 md:text-xl font-sans'>The platform the helps small-medium scale Diagnostic centers go digital easily without overhead cost </p>
+                        <h1 className=' text-[2.5rem] md:text-[3rem] font-bold font-sans text-center text-gray-600'>Revenue Management Tool <br />for Imaging Clinics.</h1>
+                        <p className='text-center text-gray-500 md:text-xl font-sans'>We help small-to-medium size businesses go digital easily without overhead cost </p>
                         <div className='flex flex-col justify-center'>
                             <Button label='Register your Center' variant='primary' className='py-4 font-sans text-lg font-normal' onClick={() => router.push('/signup')} />
                             <div className='flex items-center md:hidden mt-2'>
-                                <p className='text-gray-400'>Already onboard? </p>
+                                <p className='text-gray-400 font-sans'>Already onboard? </p>
                                 <Button label='Sign In' variant='borderless' className='' onClick={() => router.push('/signin')}/>
                             </div>
                         </div>

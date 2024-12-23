@@ -49,7 +49,7 @@ export const featureData: ReadonlyArray<FeatureList> = [
 export const pricingData: ReadonlyArray<subscriptionPlanValues> = [
 {
     subscriptionPlan: 'Basic',
-    amount: '$5.99',
+    amount: '$9.99',
     planFeatures: [
         'Unlimited Invoices and Receipts.',
         'Multiple business Branches',
@@ -59,7 +59,7 @@ export const pricingData: ReadonlyArray<subscriptionPlanValues> = [
 },
 {
     subscriptionPlan: 'Pro',
-    amount: '$9.99',
+    amount: '$14.99',
     planFeatures: [
         'Unlimited Invoices and Receipts.',
         'Multiple business Branches',
