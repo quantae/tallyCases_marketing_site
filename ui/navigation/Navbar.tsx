@@ -76,7 +76,7 @@ const Navbar = () => {
                 >
                   <div className='mt-[2rem] p-8'>
                     <ul className='flex flex-col gap-6 text-lg text-primaryVariant'>
-                      {['Get Started','Pricing', 'Blog', 'Twitter X'].map((item, index) => {
+                      {['Get Started','Pricing', 'Blog', 'Twitter X']?.map((item, index) => {
                         // Determine the href based on whether it's a page or an internal section
                         const href =
                           item === 'Skills' ? '/#skills' :

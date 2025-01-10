@@ -14,8 +14,8 @@ const Pricing = () => {
                           Choose a plan & pay later.
                     </p>
                     <div className=' w-full p-4 mt-10 flex flex-col justify-center items-center  md:items-start md:flex-row gap-4'>
-                        {pricingData.map((priceData, index) => (
-                            <PricingCard subscriptionPlan={priceData.subscriptionPlan} amount={priceData.amount} planFeatures={priceData.planFeatures} key={index} />
+                        {pricingData?.map((priceData, index) => (
+                            <PricingCard subscriptionPlan={priceData?.subscriptionPlan} amount={priceData?.amount} planFeatures={priceData?.planFeatures} key={index} />
                         ))}
                     </div>
 

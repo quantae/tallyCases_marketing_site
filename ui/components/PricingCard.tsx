@@ -22,7 +22,7 @@ const PricingCard = ({ subscriptionPlan, amount, planFeatures}:PricingCardProps)
 
 
             <ul className=' text-slate-500 space-y-4'>
-                {planFeatures.map((feature:string, index:number) => (
+                {planFeatures?.map((feature:string, index:number) => (
                     <li key={index} className='flex items-center gap-2'><FaCheck/> {feature}</li> 
                 ))}
             </ul>
