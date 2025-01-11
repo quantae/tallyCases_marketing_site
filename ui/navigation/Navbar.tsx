@@ -76,11 +76,12 @@ const Navbar = () => {
                 >
                   <div className='mt-[2rem] p-8'>
                     <ul className='flex flex-col gap-6 text-lg text-primaryVariant'>
-                      {['Get Started','Pricing', 'Blog', 'Twitter X']?.map((item, index) => {
+                      {['Sign Up', 'Sign In','Pricing', 'Blog', 'Home']?.map((item, index) => {
                         // Determine the href based on whether it's a page or an internal section
                         const href =
-                          item === 'Skills' ? '/#skills' :
-                            item === 'About me' ? '/#about-me' :
+                          item === 'Sign In' ? 'signin' :
+                            item === 'Sign Up' ? 'signup' :
+                            item === 'Home' ? '/' :
                               item === 'Contact me' ? '/#contact-me' :
                                 `/${item.toLowerCase().replace(' ', '-')}`;
 
@@ -97,7 +98,9 @@ const Navbar = () => {
                             }}
                             className="relative group hover:cursor-pointer"
                           >
-                            <Link href={href} scroll={item !== 'Projects' && item !== 'Articles'}>
+                            <Link href={href} onClick={() => {
+                              toggleMenu()
+                            }} scroll={item !== 'Projects' && item !== 'Articles'} className='block'>
                               {item}
                             </Link>
 

@@ -9,7 +9,7 @@ const SignIn = () => {
                 </p>
                 <div className='border-gray-300 border-[1px] w-full p-4 mt-10'>
                     <p className='text-gray-500'>
-                        Sign In to your business page by using your business URL or address.  
+                        Sign In to your business page by entering your business domain into your address bar.
                     </p>
                     <br/>
                     <p className='text-gray-500'>
