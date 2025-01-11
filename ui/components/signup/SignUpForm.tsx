@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { useSearchParams } from 'next/navigation';
@@ -33,7 +33,7 @@ const SignUpForm = () => {
     const [isOtpStep, setIsOtpStep] = useState<boolean>(false);
     const [isOtpVerified, setIsOtpVerified] = useState<boolean>(false);
     const [otpMessage, setOtpMessage] = useState<string>('');
-    const [signUpMessage, setSignUpMessage] = useState<string>('');
+    const [signUpApiMessage, setSignUpApiMessage] = useState<string>('');
 
 
     const handlePlanChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,7 +60,7 @@ const SignUpForm = () => {
             const data = await response.json();
 
             localStorage.setItem('tallycases', values.businessRepEmail);
-            setSignUpMessage(data?.message)
+            setSignUpApiMessage(data?.message)
 
             if (data?.success === true) {
                 setIsOtpStep(true);
@@ -152,6 +152,16 @@ const SignUpForm = () => {
         }
     };
 
+
+    useEffect(() => {
+        if (signUpApiMessage) {
+            const timer = setTimeout(() => {
+                setSignUpApiMessage('')
+            }, 10000)
+            return () => clearTimeout(timer)
+        }
+    }, [signUpApiMessage])
+
     return (
         <div className="w-full md:w-[35rem] mx-auto mt-[10rem]">
             {isOtpStep ? (<OTPInput onComplete={(otp) => {
@@ -173,11 +183,11 @@ const SignUpForm = () => {
                         businessRepEmail: Yup.string().email('Invalid email address').required(),
                         businessName: Yup.string()
                             .min(4, 'Must be at least 4 characters')
-                            .max(100, 'Must not be more than 100 characters')
+                            .max(100, 'Must not be more than 50')
                             .required('Required'),
                         businessSubdomain: Yup.string()
                             .min(4, 'Must be at least 4 characters')
-                            .max(20, 'Must not be more than 100 characters')
+                            .max(60, 'Must not be more than 60 characters')
                             .required('Required'),
                         businessPhoneNumber: Yup.string().required()
                             .min(12, 'Must be 12 digits')
@@ -217,18 +227,21 @@ const SignUpForm = () => {
                                     Business Representative Details
                                 </p>
                                 <TextInput
+                                    label='First name'
                                     name="businessRepFirstName"
                                     placeholder="Business rep first name"
                                     id="businessRepFirstName"
                                     type="text"
                                 />
                                 <TextInput
+                                    label='Last name'
                                     name="businessRepLastName"
                                     placeholder="Business rep last name"
                                     id="businessRepLastName"
                                     type="text"
                                 />
                                 <TextInput
+                                    label='email'
                                     name="businessRepEmail"
                                     id="businessRepEmail"
                                     type="email"
@@ -250,11 +263,11 @@ const SignUpForm = () => {
                                     name="businessSubdomain"
                                     id="businessSubdomain"
                                     type="text"
-                                    placeholder="Subdomain for business"
+                                    placeholder="short one word for your domain. eg. my-business, mybusiness, business "
                                 />
-                                <p className='text-red-400 text-sm p-4 font-light'>{signUpMessage}</p>
+                               
                                 <TextInput
-                                    label="Business Phone"
+                                    label="Business Phone number"
                                     name="businessPhoneNumber"
                                     id="businessPhoneNumber"
                                     type="tel"
@@ -267,6 +280,10 @@ const SignUpForm = () => {
                                     type="submit"
                                     disabled={isSubmitting}
                                 />
+
+                                <p className='text-red-400 text-sm p-4 font-light'>{signUpApiMessage}</p>
+
+
                             </section>
                         </Form>
                     )}
