@@ -1,9 +1,14 @@
 'use client'
+import type { Metadata } from "next";
 import SignUpForm from '@/ui/components/signup/SignUpForm';
 import React, { Suspense } from 'react';
 import { LoadingProvider } from '@/lib/LoadingContext';
 import LoadingIndicator from '@/ui/components/loading/LoadingIndicator';
 
+export const metadata: Metadata = {
+  title: "Tally Cases - Sign Up",
+  description: "Revenue Management Tool",
+};
 
 const page = () => {
   return (
