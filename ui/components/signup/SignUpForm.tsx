@@ -4,6 +4,7 @@ import { Formik, Form, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { useSearchParams } from 'next/navigation';
 import { useLoading } from '@/lib/LoadingContext';
+import {sendGTMEvent} from '@next/third-parties/google'
 
 import Button from '@/ui/Button';
 import { TextInput } from '@/ui/inputs/TextInput';
@@ -44,6 +45,7 @@ const SignUpForm = () => {
 
         setIsLoading(true);
         try {
+            sendGTMEvent({event: 'Register business Sign Up button', value: "User clicked"})
             const response = await fetch(`${process.env.NEXT_PUBLIC_SIGNUP_API}`, {
                 method: 'POST',
                 headers: {

@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import {sendGTMEvent} from '@next/third-parties/google'
 
 import ClickOutside from '../components/ClickOutside';
 import { HamburgerIcon } from '../components/HamburgerMenu';
@@ -56,8 +57,16 @@ const Navbar = () => {
             </ul>
           </div>
           <div className='hidden md:flex md:flex-row md:gap-4'>
-            <Button label='Sign In' variant='borderless' onClick={() => router.push('/signin')}/>
-            <Button label='Get Started' className='py-2' onClick={() => router.push('/signup')}/>
+            <Button label='Sign In' variant='borderless' onClick={() => {
+              sendGTMEvent({event: 'Desktop Sign In button', value: 'User Clicked'})
+              router.push('/signin')
+            }
+              }/>
+            <Button label='Get Started' className='py-2' onClick={() => {
+              sendGTMEvent({event: 'Desktop Get Started button', value: 'User clicked'})
+              router.push('/signup')
+
+            }}/>
 
           </div>
           <div className='md:hidden text-gray-500'>
@@ -99,6 +108,7 @@ const Navbar = () => {
                             className="relative group hover:cursor-pointer"
                           >
                             <Link href={href} onClick={() => {
+                              sendGTMEvent({event:'Mobile hamburger Nav list clicked ', value: 'User clicked'})
                               toggleMenu()
                             }} scroll={item !== 'Projects' && item !== 'Articles'} className='block'>
                               {item}

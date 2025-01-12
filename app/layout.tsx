@@ -4,12 +4,13 @@ import "./globals.css";
 import Navbar from "@/ui/navigation/Navbar";
 import { LoadingProvider } from "@/lib/LoadingContext";
 import LoadingIndicator from "@/ui/components/loading/LoadingIndicator";
+import {GoogleTagManager, GoogleAnalytics} from '@next/third-parties/google'
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Tally Cases",
-  description: "POS for diagnostic centers",
+  title: "Tally Cases Company",
+  description: "Revenue Management Tool",
 };
 
 
@@ -20,13 +21,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleAnalytics gaId="G-1Z944HJ1DB"/>
+      <GoogleTagManager gtmId="G-1Z944HJ1DB" gtmScriptUrl="https://www.googletagmanager.com/gtag/js?id=G-1Z944HJ1DB"/>
       <LoadingProvider>
-        <LoadingIndicator/>
-          <body className={inter.className}>
-        <Navbar/>
-        {children}</body>
+        <LoadingIndicator />
+        <body className={inter.className}>
+          <Navbar />
+          {children}
+        </body>
       </LoadingProvider>
-    
+
     </html>
   );
 }
