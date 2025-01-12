@@ -4,7 +4,12 @@ import Button from '../Button'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import {sendGTMEvent} from '@next/third-parties/google'
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Tally Cases ",
+    description: "Revenue Management Tool",
+  };
 const MainSection = () => {
     const router = useRouter();
    
