@@ -5,7 +5,7 @@ import React, { Suspense } from 'react';
 import { LoadingProvider } from '@/lib/LoadingContext';
 import LoadingIndicator from '@/ui/components/loading/LoadingIndicator';
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Tally Cases - Sign Up",
   description: "Revenue Management Tool",
 };

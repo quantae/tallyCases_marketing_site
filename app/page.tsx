@@ -28,10 +28,10 @@ function RouteChangeHandler() {
   return null;
 }
 
-// export const metadata: Metadata = {
-//   title: "Tally Cases Company",
-//   description: "Revenue Management Tool",
-// };
+const metadata: Metadata = {
+  title: "Tally Cases Company",
+  description: "Revenue Management Tool",
+};
 
 export default function Home() {
   return (
