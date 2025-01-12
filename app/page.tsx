@@ -1,5 +1,5 @@
 'use client';
-
+import type { Metadata } from "next";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { LoadingProvider, useLoading } from "@/lib/LoadingContext";
@@ -27,6 +27,11 @@ function RouteChangeHandler() {
 
   return null;
 }
+
+export const metadata: Metadata = {
+  title: "Tally Cases Company",
+  description: "Revenue Management Tool",
+};
 
 export default function Home() {
   return (
