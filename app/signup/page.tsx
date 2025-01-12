@@ -16,6 +16,7 @@ const page = () => {
       <LoadingIndicator/>
       <div>
       <Suspense fallback={<div>Loading...</div>}>
+      <title>Tally Cases -Sign Up</title>
         <SignUpForm />
       </Suspense>
     </div>  

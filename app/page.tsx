@@ -39,6 +39,7 @@ export default function Home() {
       <RouteChangeHandler />
       <LoadingIndicator />
       <main className="flex min-h-screen flex-col items-center justify-between font-comfortaa">
+        <title>Tally Cases Company Home</title>
         <MainSection />
         <FeaturesSection />
         <Footer />
