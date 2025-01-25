@@ -1,6 +1,7 @@
 'use client';
 import React, { useRef, useState, useEffect } from 'react';
 import Button from '@/ui/Button';
+import { useRouter } from 'next/navigation';
 
 type InputProps = {
     length?: number;
@@ -11,7 +12,7 @@ type InputProps = {
 };
 
 const OTPInput = ({
-    length = 4,
+    length = 6,
     isVerified,
     message,
     resend,
@@ -19,7 +20,25 @@ const OTPInput = ({
 }: InputProps) => {
     const inputRef = useRef<HTMLInputElement[]>([]);
     const [OTP, setOTP] = useState<string[]>(Array(length).fill(''));
-   
+    const [otpApiMessage, setOtpApiMessage] = useState<string>("");
+    const router = useRouter();
+
+
+    useEffect(() => {
+        if (message) {
+            setOtpApiMessage(message)
+        }
+    }, [message])
+
+
+    useEffect(() => {
+        if (otpApiMessage) {
+            const timer = setTimeout(() => {
+                setOtpApiMessage('')
+            }, 5000)
+            return () => clearTimeout(timer)
+        }
+    }, [otpApiMessage])
 
 
 
@@ -51,11 +70,13 @@ const OTPInput = ({
                 <div>
                     <p className="text-lg md:text-xl text-green-300 font-bold mb-4">
                         SUCCESS!
-                    </p>
-                    <p className="text-slate-600 my-6">{message}</p>
+                    </p><p className="text-slate-600 my-6">{message}</p>
+                    {/* <p className="text-slate-600 my-6">{otpApiMessage}</p> */}
                     <p className="text-slate-600 my-6">
-                        Click sign in to log in to your account.
-                    </p>
+                        Check your email for login details. Reset your password by using &ldquo;forgot password button&ldquo;</p>
+                    <Button label='Log In' className='py-2' onClick={() => {
+                        router.push('/signin')
+                    }} />
                 </div>
             ) : (
                 <div>
@@ -84,8 +105,8 @@ const OTPInput = ({
                             />
                         ))}
                     </div>
-                   
-      <p className="text-slate-500 my-6">{message}</p>
+
+                    <p className="text-slate-500 my-6">{otpApiMessage}</p>
 
                     <div className="flex items-center mt-6">
                         <p className="text-gray-400">OTP code expired?</p>
@@ -95,7 +116,7 @@ const OTPInput = ({
                             className="ml-2"
                             onClick={() => {
                                 resend();
-                               // console.log('Resend OTP');
+                                // console.log('Resend OTP');
                             }}
                         />
                     </div>

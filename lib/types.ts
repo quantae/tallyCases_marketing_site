@@ -11,13 +11,14 @@ export interface SignUpFormValues {
     businessRepLastName: string;
     businessRepEmail: string;
     businessName: string;
+    country: string;
     businessSubdomain: string;
     businessPhoneNumber: string;
-    subscriptionPlan?: string;
+    trialPlan?: string;
   }
 
   export interface subscriptionPlanValues {
-    subscriptionPlan: string,
+    trialPlan: string,
     amount: string,
     planFeatures: Array<string>
   }

@@ -17,9 +17,10 @@ const initialValues: SignUpFormValues = {
     businessRepLastName: "",
     businessRepEmail: "",
     businessName: "",
+    country: "",
     businessSubdomain: "",
     businessPhoneNumber: "",
-    subscriptionPlan: ""
+    trialPlan: ""
 };
 
 
@@ -79,6 +80,7 @@ const SignUpForm = () => {
     };
 
     const handleOTPGenerate = async () => {
+        setOtpMessage('')
         const email = localStorage.getItem("tallycases");
         const emailData = {
             email
@@ -101,17 +103,19 @@ const SignUpForm = () => {
             }
 
             const data = await response.json();
-            //  console.log('Form submitted successfully:', data);
-            setOtpMessage(data?.sendOTPMail?.message)
+            
+            setOtpMessage(data?.sendOTPMail?.message || "")
             if (data?.sendOTPMail?.success === true) {
                 setIsOtpStep(true);
-            }
+                
+            } 
             // Optionally handle success (e.g., redirect the user, show a success message)
         } catch (error) {
             console.error('Error Generating OTP:', error);
-            // Optionally handle error (e.g., show an error message)
+            setOtpMessage("Failed to send OTP. Please try again.");
         } finally {
             setIsLoading(false);
+          
         }
     };
 
@@ -166,7 +170,7 @@ const SignUpForm = () => {
 
     return (
         <div className="w-full md:w-[35rem] mx-auto mt-[10rem]">
-            {isOtpStep ? (<OTPInput onComplete={(otp) => {
+            {/* {isOtpStep ? (<OTPInput onComplete={(otp) => {
                 handleVerifyOTP(otp)
                 // console.log('OPT opened')
             }} resend={handleOTPGenerate} length={6} isVerified={isOtpVerified} message={otpMessage} />) : (
@@ -185,7 +189,10 @@ const SignUpForm = () => {
                         businessRepEmail: Yup.string().email('Invalid email address').required(),
                         businessName: Yup.string()
                             .min(4, 'Must be at least 4 characters')
-                            .max(100, 'Must not be more than 50')
+                            .max(400, 'Must not be more than 400')
+                            .required('Required'),
+                            country: Yup.string()
+                            
                             .required('Required'),
                         businessSubdomain: Yup.string()
                             .min(4, 'Must be at least 4 characters')
@@ -194,7 +201,7 @@ const SignUpForm = () => {
                         businessPhoneNumber: Yup.string().required()
                             .min(12, 'Must be 12 digits')
                             .max(12, 'Must not exceed 12 digits'),
-                        subscriptionPlan: Yup.string().required(),
+                        trialPlan: Yup.string().required(),
                     })}
                 >
                     {({ isSubmitting }) => (
@@ -207,14 +214,14 @@ const SignUpForm = () => {
                                     Subscription Plan
                                 </p>
                                 <div className='flex flex-row justify-center gap-4'>
-                                    <RadioButton label='Basic' name='subscriptionPlan'
+                                    <RadioButton label='Basic' name='trialPlan'
                                         type='radio'
                                         id='BasicPlan'
                                         value='Basic'
                                     // checked={selectedPlan}
                                     // onChange={handlePlanChange}
                                     />
-                                    <RadioButton label='Pro' name='subscriptionPlan'
+                                    <RadioButton label='Pro' name='trialPlan'
                                         type='radio'
                                         id='ProPlan'
                                         value='Pro'
@@ -260,6 +267,13 @@ const SignUpForm = () => {
                                     type="text"
                                     placeholder="Name of the parent Business"
                                 />
+                                 <TextInput
+                                    label="Country"
+                                    name="country"
+                                    id="country"
+                                    type="text"
+                                    placeholder="Country"
+                                />
                                 <TextInput
                                     label="Business Subdomain"
                                     name="businessSubdomain"
@@ -290,7 +304,9 @@ const SignUpForm = () => {
                         </Form>
                     )}
                 </Formik>
-            )}
+            )} */}
+
+            <p>Coming soon</p>
         </div>
     );
 };
